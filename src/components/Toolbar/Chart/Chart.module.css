@@ -1,0 +1,94 @@
+.Chart {
+    position: absolute;
+    top: 7vh;
+    right: 10%;
+    width: 50%;
+    height: 40vh;
+    z-index: 103;
+    background: white;
+    border: 1px black solid;
+    border-radius: 20px;
+    min-width: 25rem;
+}
+
+.OrderSection {
+    height: 78%;
+    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: auto;
+    background: transparent;
+    border-bottom: 2px black dashed;
+}
+
+.OrderImg{
+  width: 2rem;
+}
+
+.OrderSectionTable {
+  width: 98%;
+  margin: 0 auto;
+  font-size: 13px;
+}
+
+.HeadRow,
+.BodyRow {
+    text-align: center;
+    height: 2.8rem;
+}
+  
+.FootRow {
+    font-weight: bold;
+    text-align: end;
+    font-size: 14px;
+}
+
+.ChartSubtotal{
+    text-align: center;
+}
+
+.OperationSection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 22%;
+}
+
+/* 
+.ButtonSubmit,
+.ButtonClear {
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  
+  padding: 0;
+  border: none;
+} */
+
+.OperationSectionButton {
+  height: 3.2rem !important;
+  width: 3.5rem !important;
+}
+
+.OrderName {
+    text-transform: capitalize;
+    width: 8rem;
+    text-align: left;
+}
+  
+.OrderSize {
+    text-transform: capitalize;
+}
+   
+.OrderCancel {
+    font-weight: bolder;
+    cursor: pointer;
+    color: red;
+    font-size: 17px;
+    padding-bottom: 5px;
+}
+
+
+
+
+
+

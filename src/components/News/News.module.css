@@ -1,0 +1,51 @@
+.News {
+    height: 40vh;
+    position: relative;
+    top: 10vh;
+    max-width: 40rem;
+    margin: auto;
+}
+
+.Newspanel{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.NewsImg {
+    max-width: 80%;
+    height: 100%;
+    margin: auto;
+}
+
+.ButtonBack, .ButtonNext {
+    height: 100%;
+    width: 40px;
+    border: none;
+    background: transparent;
+    font-size: 40px;
+    color: gray;
+    cursor: pointer;
+    padding: 0;
+}
+
+.Bars {
+    display: flex;
+    height: 5vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.BarItem {
+    background: white;
+    border: solid 1px rgba(0,99,65,1);
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+

@@ -1,0 +1,26 @@
+.ButtonConfirm, .ButtonCancel{
+    color: white;
+    width: 3.8rem;
+    position: absolute;
+    bottom: 0.2rem;
+    height: 3.8rem;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+}
+
+.ButtonConfirm {
+    background: rgb(10, 163, 18);
+    right: 5rem;
+
+}
+.ButtonCancel{
+    background: rgb(201, 11, 11);
+    left: 5rem;
+}
+
+.ButtonCancel:active, 
+.ButtonConfirm:active {
+    border: 2px solid black;
+}

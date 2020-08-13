@@ -1,0 +1,63 @@
+.Menu {
+    background-color:#eee;
+    color: rgba(0, 0, 0, 0.794);
+    box-shadow: 5px 3px 10px grey;
+    position: relative;
+    max-width: 40rem;
+    margin: auto;
+    top: 17vh;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 20% 30% 30%;
+    grid-template-areas: "header header"
+                         "drink food"
+                         "whole merch";
+    row-gap: 1rem;
+}
+
+.Menu div {
+    display: flex;
+    align-items: center;
+    padding-left: 4rem;
+}
+
+.Menu>h2 {
+    grid-area: header;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-style: double;
+    align-self: center;
+}
+
+.Menu h4 {
+    padding-left : 1.1rem;
+}
+
+.Menu>div>img:hover{
+    box-shadow: 1px 5px 5px rgba(0,99,65,1), 1px -5px 5px rgba(0,99,65,1);
+}
+
+.Menu div img{
+    width: 5rem;
+    border-radius: 50%;
+}
+
+.Drink {
+    grid-area: drink;
+    cursor: pointer;
+}
+
+.Food {
+    grid-area: food;
+    cursor: pointer;
+}
+
+.Beans {
+    grid-area: whole;
+    cursor: pointer;
+}
+
+.Merchandise {
+    grid-area: merch;
+    cursor: pointer;
+}

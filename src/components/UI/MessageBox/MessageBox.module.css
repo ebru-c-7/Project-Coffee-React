@@ -1,0 +1,56 @@
+.MessageBox {
+    position: absolute;
+    width: 30rem; 
+    background-color: white;
+    height: 15rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 1rem;
+    border: solid 3px rgba(0,99,65,1);
+    border-radius: 20px;
+    z-index: 104;
+    display: flex;
+}
+
+.MessageBoxImgBox {
+    align-self: center;
+}
+
+.MessageBoxImg {
+    width: 8rem;
+}
+
+.Operation {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.MessageBoxMessage {
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    white-space: pre-line;
+}
+
+.Buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.Button {
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+}
+
+.orderList {
+    height: 13rem;
+    overflow: auto;
+    font-size: small;
+    margin-top: 0;
+}

@@ -1,0 +1,29 @@
+.SubmenuItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.SubmenuItem select,
+.SubmenuItem input {
+    font-size: 12px;
+}
+
+.SubmenuItem img{
+    width: 3rem;
+}
+
+.SubmenuItem p {
+    text-transform: capitalize;
+    display: inline-block;
+    text-align: left;
+    width: 7rem;
+    font-size: 14px;
+    margin-left: 2px;
+    
+}
+
+.SubmenuItem input {
+    width: 3rem;
+}

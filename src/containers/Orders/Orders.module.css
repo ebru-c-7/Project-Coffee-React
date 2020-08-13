@@ -1,0 +1,25 @@
+.OrderSection {
+    position: relative;
+    top: 12vh;
+    max-width: 38rem;
+    margin: auto;
+}
+
+.ItemSection {
+    border: 1px solid gray;
+    box-shadow: 5px 5px darkgrey;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.ImgItem {
+    width: 5rem;
+}
+
+.TableRow {
+    text-align: center;
+}
+
+.OrderTable {
+    width: 100%
+}

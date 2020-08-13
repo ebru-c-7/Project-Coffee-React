@@ -1,0 +1,103 @@
+.Submenu {
+    position: absolute;
+    z-index: 101;
+    background-color: white;
+    top: 10%;
+    width: 28.125rem;
+    height: 90vh;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 1rem;
+    border: solid 3px rgb(93, 100, 98);
+    border-radius: 20px;
+}
+
+.MenuItems {
+    overflow-x: auto;
+    overflow-y: auto;
+    height: 50vh;
+    border: solid 2px rgba(0,99,65,1);
+    padding: 5px;
+}
+
+.MenuItems button {
+    padding: 0;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: white;
+    border-color: green;
+}
+
+.DivInline {
+    display: flex;
+    align-items: flex-start;
+}
+
+.ButtonInline {
+    background: transparent;
+    outline: none;
+    border: none;
+    font-weight: bolder;
+    width: 10%;
+    cursor: pointer;
+}
+
+
+.SubmenuResult {
+    height: 20px;
+}
+
+
+
+.SubmenuResultText li {
+    text-align: left;
+    line-height: 1.5;
+    width: 90%;
+}
+
+.SubmenuResultText p {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.OrderList {
+    height: 15vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border: solid 2px black;
+    padding-inline-start: 20px;
+    font-size: smaller;
+}
+
+.SubtotalArea {
+    display: flex;
+    justify-content: space-between;
+}
+
+.SubtotalArea label{
+    position: relative;
+    left: 9rem;
+    font-weight: 700;
+    font-size: 16px;
+    color: black
+}
+
+.SubtotalArea input{
+    text-align: right;
+    border: none;
+    font-weight: 700;
+    color: black;
+    position: relative;
+    right: 8.5rem;
+}
+
+.InputValue {
+    width: 4rem;
+    padding: 0;
+    text-align: center;
+}
+
