@@ -19,3 +19,75 @@
 .Close {
     transform: translateX(-100%);
 }
+
+.Icon {
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Icon img {
+    height: 75%;
+}
+
+.List {
+    list-style: none;
+    padding-inline-start: 0;
+}
+
+.ListElement {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid rgba(0,99,65,1);
+    text-align: center;
+}
+
+.ListElement:hover {
+    background-color: rgba(0,99,65,1);
+
+}
+
+.Link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 3% 37%;
+}
+
+.Link:hover {
+    color: white;
+}
+
+.LinkActive {
+    text-decoration: underline;
+    text-decoration-color: rgba(0,99,65,1);
+}
+
+.ButtonContainer {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.Button {
+    margin-bottom: 15px;
+    padding: 25px 10px;
+    border: 1px solid rgba(0,99,65,1);
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    background: white;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 50%;
+}
+
+.Button:hover, .Button:active, .Button:focus {
+    cursor: pointer;
+    background-color: rgba(0,99,65,1);
+    color: white;
+    border-color: rgba(0,99,65,1);
+ }
+

@@ -3,3 +3,7 @@ export const DELETE_PRO = "DELETE_PRO";
 export const TOGGLE_SUBMENU = "TOGGLE_SUBMENU";
 export const EMPTY_ORDER = "EMPTY_ORDER";
 export const CLEAR_ALL = "CLEAR_ALL";
+export const SIGN_IN = "SIGN_IN";
+export const SIGN_IN_CHECK = "SIGN_IN_CHECK";
+export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS";
+export const LOG_OUT = "LOG_OUT";

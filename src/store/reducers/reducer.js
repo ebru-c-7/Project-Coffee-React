@@ -4,6 +4,19 @@ const initialState = {
   chartOrderList: [],
   isEmptyOrder: false,
   isSubMenuOpen: false,
+  isSignedIn: false,
+  redirectRoute: null,
+  userId: null,
+  users: [
+    {
+      email: "test@test.com",
+      password: "1234",
+    },
+    {
+      email: "test2@test.com",
+      password: "5678",
+    },
+  ],
 };
 
 const addToChartHandler = (state, action) => {
@@ -27,6 +40,17 @@ const deleteItemHandler = (state, action) => {
   };
 };
 
+const checkUserHandler = (state, action) => {
+  let isUser = false;
+  for(let user of state.users) {
+    if(user.email === action.email && user.password === action.password) {
+      isUser = true;
+      break;
+    }
+  }
+  return isUser;
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_PRO:
@@ -42,7 +66,7 @@ const reducer = (state = initialState, action) => {
         isSubMenuOpen: action.isOpen,
       };
     case actionTypes.EMPTY_ORDER:
-      return {
+      return { 
         ...state,
         isEmptyOrder: false,
       };
@@ -51,6 +75,32 @@ const reducer = (state = initialState, action) => {
         ...state,
         chartOrderList: [],
       };
+    case actionTypes.SIGN_IN:
+      return {
+        ...state,
+        redirectRoute: action.route,
+      };
+    case actionTypes.SIGN_IN_CHECK:
+      let isValidUser = checkUserHandler(state, action);
+      if(!isValidUser) {
+        console.log("no such user");
+        return;
+      } else {
+        console.log("this is right!");
+        return {
+          ...state,
+          userId: action.email,
+          redirectRoute: "/",
+          isSignedIn: true
+        };
+      };
+      case actionTypes.LOG_OUT:
+        return {
+          ...state,
+          userId: null,
+          isSignedIn: false, 
+          redirectRoute: "/"
+        };
     default:
       return state;
   }
