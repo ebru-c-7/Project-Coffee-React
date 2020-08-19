@@ -18,6 +18,7 @@ const sideDrawer = (props) => {
       <div className={attachedClasses.join(" ")} onClick={props.close}>
         <div className={classes.Icon}>
           <Icon type="img" logo="/img/starbucks-icon.png" def="company-logo" />
+          {props.userName ? <p>Welcome, {props.userName}!</p> : null}
         </div>
 
         {props.isSignedIn ? null : (

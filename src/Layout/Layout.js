@@ -25,6 +25,13 @@ class Layout extends Component {
     });
   };
 
+  // componentDidUpdate() {
+  //   console.log(this.props.newUser);
+  //   if(this.props.newUser) {
+  //     this.addNewUserHandler();
+  //   }
+  // }
+
   addToChartMessageHandler = () => {
     this.props.onEmptyOrder();
     let message = "Please first add item to send to chart!";
@@ -121,6 +128,11 @@ class Layout extends Component {
     }
   };
 
+  addNewUserHandler = () => {
+    axios.post("/users.json", this.props.newUser);
+    this.props.onClearNewUser();
+  }
+
   render() {
     let numofOrders = 0;
     if (this.props.chartOrderList) {
@@ -162,6 +174,7 @@ class Layout extends Component {
           close={this.sideDrawerCloseHandler}
           isSignedIn={this.props.isSignedIn}
           logout={this.props.onLogout}
+          userName={this.props.userId}
         />
         <div className={classes.Content}>{this.props.children}</div>
       </div>
@@ -175,7 +188,8 @@ const mapStateToProps = (state) => {
     isEmptyOrder: state.isEmptyOrder,
     isSignedIn: state.isSignedIn,
     redirectRoute: state.redirectRoute,
-    userId: state.userId
+    userId: state.userId,
+    // newUser: state.newUser
   };
 };
 
@@ -185,7 +199,8 @@ const mapDispatchToProps = (dispatch) => {
     onEmptyOrder: () => dispatch(actions.emptyOrder()),
     onClearAll: () => dispatch(actions.clearAll()),
     onSignIn: (route) => dispatch(actions.signIn(route)),
-    onLogout: () => dispatch(actions.logout())
+    onLogout: () => dispatch(actions.logout()),
+    // onClearNewUser: () => dispatch(actions.newUser(null, null))
   };
 };
 

@@ -31,12 +31,12 @@ const FormItem = (props) => {
         }
         break;
       case "password":
-        isValid = value.trim().length > 4;
+        isValid = value.trim().length > 5;
         if (isValid) {
           setPassword(value);
           resetInput();
         } else {
-          setMessage("Should be more than 4 chars!");
+          setMessage("Should be more than 5 chars!");
         }
         break;
       case "password2":

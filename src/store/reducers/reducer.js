@@ -7,16 +7,10 @@ const initialState = {
   isSignedIn: false,
   redirectRoute: null,
   userId: null,
-  users: [
-    {
-      email: "test@test.com",
-      password: "1234",
-    },
-    {
-      email: "test2@test.com",
-      password: "5678",
-    },
-  ],
+  token: null,
+  error: null,
+  users: [],
+  newUser: null
 };
 
 const addToChartHandler = (state, action) => {
@@ -40,69 +34,75 @@ const deleteItemHandler = (state, action) => {
   };
 };
 
-const checkUserHandler = (state, action) => {
-  let isUser = false;
-  for(let user of state.users) {
-    if(user.email === action.email && user.password === action.password) {
-      isUser = true;
-      break;
-    }
-  }
-  return isUser;
+const toggleMenuHandler = (state, action) => {
+  return {
+    ...state,
+    isSubMenuOpen: action.isOpen,
+  };
+}
+
+const emptyOrderHandler = (state, action) => {
+  return {
+    ...state,
+    isEmptyOrder: false,
+  };
+}
+
+const clearAllHandler = (state, action) => {
+  return {
+    ...state,
+    chartOrderList: [],
+  };
+}
+
+const signInHandler = (state, action) => {
+  return {
+    ...state,
+    redirectRoute: action.route,
+  };
+};
+
+const authSuccessHandler = (state, action) => {
+  return {
+    ...state,
+    userId: action.username,
+    redirectRoute: "/",
+    isSignedIn: true,
+    error: null,
+    token: action.idtoken
+  };
+};
+
+const authFailHandler = (state, action) => {
+  return {
+    ...state,
+    userId: null,
+    isSignedIn: false,
+    error: action.error.data.message
+  };
+}
+
+const logoutHandler = (state, action) => {
+  return {
+    ...state,
+    userId: null,
+    isSignedIn: false,
+    redirectRoute: "/logout",
+  };
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.ADD_PRO:
-      console.log(action.order);
-      const updatedStateADD = addToChartHandler(state, action);
-      return updatedStateADD;
-    case actionTypes.DELETE_PRO:
-      const updatedStateDL = deleteItemHandler(state, action);
-      return updatedStateDL;
-    case actionTypes.TOGGLE_SUBMENU:
-      return {
-        ...state,
-        isSubMenuOpen: action.isOpen,
-      };
-    case actionTypes.EMPTY_ORDER:
-      return { 
-        ...state,
-        isEmptyOrder: false,
-      };
-    case actionTypes.CLEAR_ALL:
-      return {
-        ...state,
-        chartOrderList: [],
-      };
-    case actionTypes.SIGN_IN:
-      return {
-        ...state,
-        redirectRoute: action.route,
-      };
-    case actionTypes.SIGN_IN_CHECK:
-      let isValidUser = checkUserHandler(state, action);
-      if(!isValidUser) {
-        console.log("no such user");
-        return;
-      } else {
-        console.log("this is right!");
-        return {
-          ...state,
-          userId: action.email,
-          redirectRoute: "/",
-          isSignedIn: true
-        };
-      };
-      case actionTypes.LOG_OUT:
-        return {
-          ...state,
-          userId: null,
-          isSignedIn: false, 
-          redirectRoute: "/"
-        };
-    default:
-      return state;
+    case actionTypes.ADD_PRO: return addToChartHandler(state, action);
+    case actionTypes.DELETE_PRO: return deleteItemHandler(state, action);
+    case actionTypes.TOGGLE_SUBMENU: return toggleMenuHandler(state, action);
+    case actionTypes.EMPTY_ORDER: return emptyOrderHandler(state, action);
+    case actionTypes.CLEAR_ALL: return clearAllHandler(state, action);
+    case actionTypes.SIGN_IN: return signInHandler(state, action);
+    case actionTypes.AUTH_SUCCESS: return authSuccessHandler(state, action);
+    case actionTypes.AUTH_FAIL: return authFailHandler(state, action);
+    case actionTypes.LOG_OUT: return logoutHandler(state, action);
+    default: return state;
   }
 };
 

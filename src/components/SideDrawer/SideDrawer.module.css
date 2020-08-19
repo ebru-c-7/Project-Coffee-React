@@ -28,7 +28,12 @@
 }
 
 .Icon img {
-    height: 75%;
+    height: 60%;
+}
+
+.Icon p {
+    font-size: 16px;
+    text-shadow: 0.6px 1.2px rgba(0,99,65,1);
 }
 
 .List {

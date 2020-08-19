@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 // import axios from "../../../axios-orders";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
+import * as actions from "../../../store/actions/actions";
 import classes from "./SignUp.module.css";
 import Icon from "../../../components/Toolbar/Icon/Icon";
 import FormItem from "./FormItem/FormItem";
@@ -42,22 +44,20 @@ class SignUp extends Component {
   };
 
   submitForm = (email, password, username) => {
-    this.setState({
+    let data = {
       email: email,
       password: password,
-      userName: username,
+      username: username,
+    };
+
+    this.setState({
+      email: data.email,
+      password: data.password,
+      userName: data.username,
     });
-    // axios
-    //   .post("/users", {
-    //     email: email,
-    //     password: password,
-    //     userName: username,
-    //   })
-    //   .then((response) => {
-    //     console.log(response);
-    //     return (<Redirect to={SignIn} />);
-    //   })
-    //   .catch((err) => console.log(err));
+
+    this.props.onSignUp(email, password, "signup", username);
+
   };
 
   render() {
@@ -89,4 +89,10 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSignUp: (mail, password, method, username) => dispatch(actions.authStart(mail, password, method, username)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignUp);

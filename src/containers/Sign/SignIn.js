@@ -15,7 +15,7 @@ class SignIn extends Component {
 
   checkUser = (event) => {
     event.preventDefault();
-    this.props.onSignInCheck(this.state.email, this.state.password);
+    this.props.onSignInStart(this.state.email, this.state.password, "signin");
   };
 
   inputChangeHandler = (event) => {
@@ -81,7 +81,7 @@ const mapStateToProps = (state) => {
   
   const mapDispatchToProps = (dispatch) => {
     return {
-      onSignInCheck: (mail, pass) => dispatch(actions.signInCheck(mail, pass)) 
+      onSignInStart: (mail, pass, method) => dispatch(actions.authStart(mail, pass, method)) 
     };
   };
   

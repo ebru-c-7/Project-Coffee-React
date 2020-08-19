@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import axios from "../../axios-orders";
 import classes from "./Orders.module.css";
@@ -23,7 +24,10 @@ class Orders extends Component {
             orderDetail: response.data[key].orderList,
           });
         }
-        fetchedOrders = fetchedOrders.filter(order => order.userId === this.props.userId);
+        fetchedOrders = fetchedOrders.filter((order) => {
+          console.log(order.userId, this.props.userId);
+          return order.userId === this.props.userId;
+        });
         this.setState({ orders: fetchedOrders });
         console.log(fetchedOrders);
       })
@@ -54,7 +58,7 @@ class Orders extends Component {
 
       ordersArray.push(
         <div key={order.userId} className={classes.ItemSection}>
-          <p>{order.userId}</p>
+          <p>Ordered By {order.userId}</p>
           <table className={classes.OrderTable}>
             <thead>
               <tr>
@@ -82,17 +86,24 @@ class Orders extends Component {
         </div>
       );
     }
-    return <div className={classes.OrderSection}>{ordersArray}</div>;
+    return (
+      <div>
+        {this.props.redirectRoute === "/logout" ? (
+          <Redirect to="/" />
+        ) : null}
+        <div className={classes.OrderSection}>{ordersArray}</div>
+      </div>
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-  //   chartOrderList: state.chartOrderList,
-  //   isEmptyOrder: state.isEmptyOrder,
-  //   isSignedIn: state.isSignedIn,
-    // redirectRoute: state.redirectRoute,
-    userId: state.userId
+    //   chartOrderList: state.chartOrderList,
+    //   isEmptyOrder: state.isEmptyOrder,
+    //   isSignedIn: state.isSignedIn,
+    redirectRoute: state.redirectRoute,
+    userId: state.userId,
   };
 };
 
