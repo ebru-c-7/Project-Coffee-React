@@ -23,3 +23,22 @@
 .OrderTable {
     width: 100%
 }
+
+.PageSection {
+    position: relative;
+    top: 12vh;
+    margin: auto;
+    max-width: 38rem;
+    margin-bottom: 30px;
+}
+
+.PageSection span {
+    margin: 25px;
+    padding: 9px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.Active {
+    text-decoration: underline;
+}

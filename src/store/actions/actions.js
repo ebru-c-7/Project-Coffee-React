@@ -58,7 +58,6 @@ const findUserName = (email) => {
         userInfo = userInfo[0];
         userInfo = userInfo.userName;
         if (userInfo) {
-          console.log(userInfo);
           resolve(userInfo);
         }
       }
@@ -147,7 +146,6 @@ export const autoSignIn = () => {
         let username;
 
         findUserName(email).then((resp) => {
-          console.log(resp);
           username = resp;
           dispatch(authSuccess(email, username, token));
         });
