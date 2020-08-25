@@ -4,18 +4,21 @@ import { Redirect } from "react-router-dom";
 
 import axios from "../../axios-orders";
 import classes from "./Orders.module.css";
+import Spinner from "./../../components/UI/Spinner/Spinner";
 
 class Orders extends Component {
   state = {
     orders: [],
     activePage: 1,
+    loading: true,
   };
 
-  componentDidMount() {
+  componentWillMount() {
     // const query = '?orderBy="userId"&equalTo="'+ this.props.userId + '"';
     axios
       .get("/orders.json")
       .then((response) => {
+        this.setState({ loading: false });
         let fetchedOrders = [];
         for (let key in response.data) {
           fetchedOrders.push({
@@ -122,8 +125,16 @@ class Orders extends Component {
     return (
       <div>
         {this.props.redirectRoute === "/logout" ? <Redirect to="/" /> : null}
-        <div className={classes.OrderSection}>{ordersArray}</div>
-        <div className={classes.PageSection}>{pageNumbers}</div>
+        {this.state.loading ? (
+          <div className={classes.OrderSection}>
+            <Spinner />
+          </div>
+        ) : (
+          <React.Fragment>
+            <div className={classes.OrderSection}>{ordersArray}</div>
+            <div className={classes.PageSection}>{pageNumbers}</div>
+          </React.Fragment>
+        )}
       </div>
     );
   }

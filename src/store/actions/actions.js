@@ -96,14 +96,13 @@ export const authStart = (mail, password, method, username) => {
             email: mail,
             username: username,
           })
-            .then((resp) => console.log(resp))
-            .catch((err) => console.log(err));
-          dispatch(authSuccess(mail, username, res.data.idToken));
+            .then((resp) => {
+              dispatch(authSuccess(mail, username, res.data.idToken));
+            })
         }
       })
       .catch((err) => {
-        console.log(err);
-        dispatch(authFail(err));
+        dispatch(authFail(err.response.data.error.message));
       });
   };
 };
@@ -124,6 +123,12 @@ export const authFail = (err) => {
   };
 };
 
+export const errorHandled = () => {
+  return {
+    type: actionTypes.ERROR_HANDLED,
+  };
+};
+
 export const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("expirationDate");
@@ -135,6 +140,7 @@ export const logout = () => {
 export const autoSignIn = () => {
   let token = localStorage.getItem("token");
   return (dispatch) => {
+    if(!token) {return;}
     Axios.post(
       "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyDQFo9cdagqWcLLClxI5gIbHSMl8gy9N7g",
       {
@@ -150,6 +156,6 @@ export const autoSignIn = () => {
           dispatch(authSuccess(email, username, token));
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {return;});
   };
 };

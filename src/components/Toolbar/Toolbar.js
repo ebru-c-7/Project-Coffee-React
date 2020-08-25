@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import classes from "./Toolbar.module.css";
 
-import Store from "./Store/Store";
+// import Store from "./Store/Store";
 import Icon from "./Icon/Icon";
 import Chart from "./Chart/Chart";
 
 const Toolbar = (props) => {
   const [isChartOpen, setisChartOpen] = useState(false);
-  const stores = ["Levent", "Şişli", "Kadköy", "Maslak"];
+  // const stores = ["Levent", "Şişli", "Kadköy", "Maslak"];
   let style = {
     visibility: "hidden",
   };
@@ -21,7 +21,7 @@ const Toolbar = (props) => {
       !props.isMessageBoxOpen ? (
         <Chart
           open={() => setisChartOpen(true)}
-          close={() => setisChartOpen(false)}
+          close={() => setisChartOpen(false)} 
           orderList={props.orderList}
           state={isChartOpen}
           deleteOrder={props.deleteOrderItem}
@@ -57,7 +57,7 @@ const Toolbar = (props) => {
         <div className={classes.Icon}>
           <Icon type="img" logo="/img/starbucks-icon.png" def="company-logo" />
         </div>
-        <Store stores={stores} />
+        {/* <Store stores={stores} /> */}
         <div className={classes.Cart}>
           <Icon
             open={chartOpenHandler}

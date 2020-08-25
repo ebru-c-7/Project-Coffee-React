@@ -78,7 +78,7 @@ const authFailHandler = (state, action) => {
     ...state,
     userId: null,
     isSignedIn: false,
-    error: action.error.data.message
+    error: action.error
   };
 }
 
@@ -91,6 +91,13 @@ const logoutHandler = (state, action) => {
   };
 };
 
+const errorHandler = (state, action) => {
+  return {
+    ...state,
+    error: null
+  }
+}
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_PRO: return addToChartHandler(state, action);
@@ -102,6 +109,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.AUTH_SUCCESS: return authSuccessHandler(state, action);
     case actionTypes.AUTH_FAIL: return authFailHandler(state, action);
     case actionTypes.LOG_OUT: return logoutHandler(state, action);
+    case actionTypes.ERROR_HANDLED: return errorHandler(state,action);
     default: return state;
   }
 };
